@@ -110,6 +110,7 @@
     <string name="version_n">Versão %s</string>
     <string name="frequency">Frequência</string>
     <string name="checkmark">Marcações</string>
+    <string name="daily_summary">Resumo Diário</string>
     <string name="best_streaks">Correntes mais longas</string>
     <string name="every_day">Todo dia</string>
     <string name="every_week">Toda semana</string>
