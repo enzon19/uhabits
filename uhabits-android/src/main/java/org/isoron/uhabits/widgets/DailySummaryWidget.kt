@@ -3,7 +3,6 @@ package org.isoron.uhabits.widgets
 import android.app.PendingIntent
 import android.content.Context
 import android.view.View
-import org.isoron.platform.time.getToday
 import org.isoron.uhabits.core.models.HabitList
 import org.isoron.uhabits.widgets.views.DailySummaryWidgetView
 
@@ -20,7 +19,6 @@ class DailySummaryWidget(
     override fun getOnClickPendingIntent(context: Context): PendingIntent? = null
 
     override fun refreshData(widgetView: View) {
-        val today = getToday()
         var total = 0
         var completed = 0
 
