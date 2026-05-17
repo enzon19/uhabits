@@ -5,9 +5,12 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
+import android.os.Build
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.core.graphics.toColorInt
 
+@RequiresApi(Build.VERSION_CODES.Q)
 class DailySummaryWidgetView(context: Context) : View(context) {
 
     private var pendingCount: Int = 0
@@ -27,11 +30,26 @@ class DailySummaryWidgetView(context: Context) : View(context) {
         trackPaint.strokeWidth = 16f
         trackPaint.strokeCap = Paint.Cap.ROUND
 
+        progressPaint.color = "#90F6F6F5".toColorInt()
         progressPaint.style = Paint.Style.STROKE
         progressPaint.strokeWidth = 16f
         progressPaint.strokeCap = Paint.Cap.ROUND
 
-        textPaint.color = Color.WHITE
+        try {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                val file = java.io.File("/system/fonts/OneUISans-VF.ttf")
+                val font = android.graphics.fonts.Font.Builder(file)
+                    .setWeight(700)
+                    .build()
+                val family = android.graphics.fonts.FontFamily.Builder(font).build()
+                textPaint.typeface = android.graphics.Typeface.CustomFallbackBuilder(family).build()
+            } else {
+                textPaint.typeface = android.graphics.Typeface.createFromFile("/system/fonts/OneUISans-VF.ttf")
+            }
+        } catch (e: Exception) {
+            textPaint.typeface = android.graphics.Typeface.DEFAULT
+        }
+        textPaint.color = "#F6F6F5".toColorInt()
         textPaint.textAlign = Paint.Align.CENTER
         textPaint.isFakeBoldText = true
     }
@@ -41,6 +59,11 @@ class DailySummaryWidgetView(context: Context) : View(context) {
 
     private val oval = RectF()
     override fun onDraw(canvas: Canvas) {
+
+        /*val mgr = android.graphics.fonts.SystemFonts.getAvailableFonts()
+        mgr.forEach { font ->
+            android.util.Log.d("FONTS", font.file?.name ?: "null")
+        }*/
         super.onDraw(canvas)
         val w = width.toFloat()
         val h = height.toFloat()
@@ -65,9 +88,6 @@ class DailySummaryWidgetView(context: Context) : View(context) {
             val completed = totalCount - pendingCount
             val fraction = completed.toFloat() / totalCount.toFloat()
             val progressSweep = sweepAngle * fraction
-
-            progressPaint.color = Color.WHITE
-
             canvas.drawArc(oval, startAngle, progressSweep, false, progressPaint)
         }
 
