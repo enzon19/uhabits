@@ -16,7 +16,15 @@ class DailySummaryWidget(
     override val defaultHeight: Int = 150
     override val defaultWidth: Int = 250
 
-    override fun getOnClickPendingIntent(context: Context): PendingIntent? = null
+    override fun getOnClickPendingIntent(context: Context): PendingIntent? {
+        val intent = context.packageManager.getLaunchIntentForPackage(context.packageName)
+        return PendingIntent.getActivity(
+            context,
+            0,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+    }
 
     override fun refreshData(widgetView: View) {
         var total = 0
