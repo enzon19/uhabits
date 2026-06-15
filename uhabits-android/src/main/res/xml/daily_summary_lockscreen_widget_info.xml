@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:minWidth="56dp"
+    android:minHeight="56dp"
+    android:targetCellWidth="1"
+    android:targetCellHeight="1"
+    android:updatePeriodMillis="1800000"
+    android:previewImage="@mipmap/ic_launcher"
+    android:initialLayout="@layout/widget_wrapper"
+    android:resizeMode="none"
+    android:widgetCategory="keyguard"
+    app:previewLayoutTiny="@layout/widget_wrapper"
+    app:targetHost="lock_and_aod"
+    app:widgetSize="tiny"
+    app:widgetStyle="monotone" />

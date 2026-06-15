@@ -210,6 +210,18 @@
         </receiver>
 
         <receiver
+            android:name=".widgets.DailySummaryLockscreenWidgetProvider"
+            android:exported="true"
+            android:label="@string/daily_summary">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/daily_summary_lockscreen_widget_info" />
+        </receiver>
+
+        <receiver
             android:name=".widgets.TargetWidgetProvider"
             android:exported="true"
             android:label="@string/target">
@@ -231,8 +243,7 @@
         </receiver>
 
         <receiver android:name=".receivers.WidgetReceiver"
-            android:exported="true"
-            android:permission="false">
+            android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
                 <action android:name="org.isoron.uhabits.ACTION_SET_NUMERICAL_VALUE" />
