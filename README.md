@@ -1,3 +1,8 @@
 <h1>Loop Habit Tracker (Forked)</h1>
 
-This fork adds [OneUI Complications](https://github.com/breezy-weather/breezy-weather/issues/858) to the lock screen. [Checkout the original project](https://github.com/iSoron/uhabits). Essentially, this is now a third-party habits app with OneUI widget lock screen.
+This fork will add [OneUI Complications](https://github.com/breezy-weather/breezy-weather/issues/858) to the lock screen. [Checkout the original project](https://github.com/iSoron/uhabits). Essentially, this will be a third-party habit tracker app with OneUI widget lock screen. 
+
+Currently, it offers a small 1x1 widget very similiar to OneUI Complications. You can add it to the lock screen using Samsung's Good Lock and a transparent image with Gallery complication to provide the background blur and space. Result:
+
+<img height="360" alt="Screenshot_20260516_214334_Smart Launcher" src="https://github.com/user-attachments/assets/280a4c12-1ef0-4277-b39e-7307b8462ccc" />
+
